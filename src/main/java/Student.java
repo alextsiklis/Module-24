@@ -11,6 +11,10 @@ public class Student {
         this.avgExamScore = avgExamScore;
     }
 
+    public Student() {
+
+    }
+
     public String getFullName() {
         return fullName;
     }
@@ -48,7 +52,7 @@ public class Student {
         return "Student [fullName=" + fullName +
                 ", universityID=" + universityId +
                 ", currentCourseNumber=" + currentCourseNumber +
-                ", avgExamScore=" + avgExamScore;
+                ", avgExamScore=" + avgExamScore + "]";
     }
 }
 

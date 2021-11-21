@@ -1,9 +1,12 @@
 public enum StudyProfile {
     MEDICINE ("Medicine"),
-    ENGINEERING ("Engineering"),
+    PHYSICS ("PHYSICS"),
+    MATHEMATICS ("MATHEMATICS"),
     IT ("IT"),
-    LAW ("Law"),
-    SPORT ("Sport");
+    LAW ("LAW"),
+    SPORT ("SPORT"),
+    LINGUISTICS ("LINGUISTICS");
+
 
     private String title;
 

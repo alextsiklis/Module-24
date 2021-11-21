@@ -13,6 +13,10 @@ public class University {
         this.mainProfile = mainProfile;
     }
 
+    public University() {
+
+    }
+
     public String getId() {
         return id;
     }
@@ -59,6 +63,6 @@ public class University {
                 ", fullName=" + fullName +
                 ", shortName=" + shortName +
                 ", yearOfFoundation=" + yearOfFoundation +
-                ", mainProfile=" + mainProfile.getTitle();
+                ", mainProfile=" + mainProfile + "]";
     }
 }
