@@ -1,6 +1,3 @@
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -9,11 +6,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -95,12 +90,24 @@ public class Main {
             e.printStackTrace();
         }
 
-        for (University university : universities) {
-            System.out.println(university.toString());
-        }
+        Comparator<Student> studentComparator = UseComparator.getStudentComparator(EnumStudent.NAME);
+        Comparator<University> universityComparator = UseComparator.getUniversityComparator(EnumUniversity.NAME);
 
-        for (Student student : students) {
-            System.out.println(student.toString());
-        }
+        universities.sort(universityComparator);
+        students.sort(studentComparator);
+
+        Stream streamUni = universities.stream();
+        Stream streamStu = students.stream();
+
+        streamUni.forEach(System.out::println);
+        streamStu.forEach(System.out::println);
+
+//        for (University university : universities) {
+//            System.out.println(university.toString());
+//        }
+//
+//        for (Student student : students) {
+//            System.out.println(student.toString());
+//        }
     }
 }

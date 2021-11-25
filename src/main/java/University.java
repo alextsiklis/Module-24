@@ -1,3 +1,7 @@
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Comparator;
+
 public class University {
     private String id;
     private String fullName;
@@ -56,6 +60,27 @@ public class University {
     public void setMainProfile(StudyProfile mainProfile) {
         this.mainProfile = mainProfile;
     }
+
+    public static class CompareByName implements Comparator<University> {
+        @Override
+        public int compare(University a, University b) {
+            return StringUtils.compare(a.getFullName(), b.getFullName());
+        }
+    };
+
+    public static class CompareById implements Comparator<University> {
+        @Override
+        public int compare(University a, University b) {
+            return StringUtils.compare(a.getId(), b.getId());
+        }
+    };
+
+    public static class CompareByYear implements Comparator<University> {
+        @Override
+        public int compare(University a, University b) {
+            return Integer.compare(a.getYearOfFoundation(), b.getYearOfFoundation());
+        }
+    };
 
     @Override
     public String toString() {
