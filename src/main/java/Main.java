@@ -93,14 +93,21 @@ public class Main {
         Comparator<Student> studentComparator = UseComparator.getStudentComparator(EnumStudent.NAME);
         Comparator<University> universityComparator = UseComparator.getUniversityComparator(EnumUniversity.NAME);
 
-        universities.sort(universityComparator);
-        students.sort(studentComparator);
+//        universities.sort(universityComparator);
+//        students.sort(studentComparator);
+//
+//        Stream streamUni = universities.stream();
+//        Stream streamStu = students.stream();
+//
+//        streamUni.forEach(System.out::println);
+//        streamStu.forEach(System.out::println);
 
-        Stream streamUni = universities.stream();
-        Stream streamStu = students.stream();
-
-        streamUni.forEach(System.out::println);
-        streamStu.forEach(System.out::println);
+        List<Statistics> statistics = Transformer.former(universities,students);
+        try {
+            XlsWriter.createTable(statistics, "statistics");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        for (University university : universities) {
 //            System.out.println(university.toString());
