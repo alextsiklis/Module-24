@@ -1,5 +1,9 @@
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Transformer {
     public static List<Statistics> former(List<University> universities, List<Student> students) {
@@ -16,12 +20,20 @@ public class Transformer {
                     Score += student.getAvgExamScore();
                 }
             }
+
             stat.setStuCount(StudentsCount);
-            stat.setAvgExamScore(Score/StudentsCount);
+            if (StudentsCount == 0) {
+                stat.setAvgExamScore(BigDecimal.valueOf(0));
+            }else{
+                MathContext context = new MathContext(3, RoundingMode.HALF_UP);
+                BigDecimal result = new BigDecimal(Score / StudentsCount, context);
+                stat.setAvgExamScore(result);
+            }
             stat.setStudyProfile(university.getMainProfile());
             stat.setUniversityName(university.getFullName());
             stats.add(stat);
         }
+
         return stats;
     }
 

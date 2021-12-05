@@ -49,7 +49,6 @@ public class XlsWriter {
         row.createCell(0).setCellValue(stat.getStudyProfile().getTitle());
         row.createCell(1).setCellValue(stat.getStuCount());
         row.createCell(2).setCellValue(stat.getUniversityName());
-        row.createCell(3).setCellValue(stat.getAvgExamScore());
+        row.createCell(3).setCellValue(String.valueOf(stat.getAvgExamScore()));
     }
-
 }

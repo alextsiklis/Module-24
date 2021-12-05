@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class Statistics {
     public Statistics() {
 
@@ -11,12 +13,12 @@ public class Statistics {
         this.studyProfile = studyProfile;
     }
 
-    public double getAvgExamScore() {
+    public BigDecimal getAvgExamScore() {
         return AvgExamScore;
     }
 
-    public void setAvgExamScore(double avgExamScore) {
-        AvgExamScore = avgExamScore;
+    public void setAvgExamScore(BigDecimal avgExamScore) {
+        this.AvgExamScore = avgExamScore;
     }
 
     public String getUniversityName() {
@@ -35,15 +37,15 @@ public class Statistics {
         this.stuCount = stuCount;
     }
 
-    public Statistics(StudyProfile studyProfile, int avgExamScore, String universityName, int stuCount) {
+    public Statistics(StudyProfile studyProfile, BigDecimal avgExamScore, String universityName, int stuCount) {
         this.studyProfile = studyProfile;
-        AvgExamScore = avgExamScore;
+        this.AvgExamScore = avgExamScore;
         this.universityName = universityName;
         this.stuCount = stuCount;
     }
 
     public StudyProfile studyProfile;
-    public double AvgExamScore;
+    public BigDecimal AvgExamScore;
     public String universityName;
     public int stuCount;
 
