@@ -1,97 +1,30 @@
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xwpf.usermodel.XWPFLatentStyles;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
-import java.util.Comparator;
-import java.util.stream.Stream;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
+        String file = "src/main/resources/universityInfo.xlsx";
 
-    public static void main(String[] args) {
+        PackageCreator.createPackage("XLSFiles");
+        PackageCreator.createPackage("JSONFiles");
+        PackageCreator.createPackage("XMLFiles");
 
-        FileInputStream ExcelFile = null;
-        {
-            try {
-                ExcelFile = new FileInputStream("src/main/resources/universityInfo.xlsx");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
+        List<University> universities = XlsReader.readUni(XlsReader.openTable(file));
+        List<Student> students = XlsReader.readStu(XlsReader.openTable(file));
 
-        XSSFWorkbook workbook = null;
-        {
-            try {
-                workbook = new XSSFWorkbook(ExcelFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+//        for (University university : universities) {
+//            System.out.println(university.toString());
+//        }
+//
+//        for (Student student : students) {
+//            System.out.println(student.toString());
+//        }
 
-        List<University> universities = new ArrayList<>();
-        List<Student> students = new ArrayList<>();
-
-        XSSFSheet sheetUni = workbook.getSheet("Университеты");
-
-        for (int j = 1; j < sheetUni.getLastRowNum(); j++){
-            XSSFRow row = sheetUni.getRow(j);
-            University university = new University();
-            for (int i = 0; i < sheetUni.getRow(0).getLastCellNum(); i++) {
-                XSSFCell cell = row.getCell(i);
-                if (i == 0) {
-                    university.setId(cell.getRichStringCellValue().getString());
-                }
-                if (i == 1) {
-                    university.setFullName(cell.getRichStringCellValue().getString());
-                }
-                if (i == 2) {
-                    university.setShortName(cell.getRichStringCellValue().getString());
-                }
-                if (i == 3) {
-                    university.setYearOfFoundation((int) cell.getNumericCellValue());
-                }
-                if (i == 4) {
-                    university.setMainProfile(StudyProfile.valueOf(cell.getRichStringCellValue().getString()));
-                }
-            }
-            universities.add(university);
-        }
-
-        XSSFSheet sheetStu = workbook.getSheet("Студенты");
-
-        for (int j = 1; j < sheetStu.getLastRowNum(); j++){
-            XSSFRow row = sheetStu.getRow(j);
-            Student student = new Student();
-            for (int i = 0; i < sheetStu.getRow(0).getLastCellNum(); i++) {
-                XSSFCell cell = row.getCell(i);
-                if (i == 0) {
-                    student.setUniversityId(cell.getRichStringCellValue().getString());
-                }
-                if (i == 1) {
-                    student.setFullName(cell.getRichStringCellValue().getString());
-                }
-                if (i == 2) {
-                    student.setCurrentCourseNumber((int) cell.getNumericCellValue());
-                }
-                if (i == 3) {
-                    student.setAvgExamScore((float) cell.getNumericCellValue());
-                }
-            }
-            students.add(student);
-        }
-
-        try {
-            ExcelFile.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Comparator<Student> studentComparator = UseComparator.getStudentComparator(EnumStudent.NAME);
-        Comparator<University> universityComparator = UseComparator.getUniversityComparator(EnumUniversity.NAME);
+//        Comparator<Student> studentComparator = UseComparator.getStudentComparator(EnumStudent.NAME);
+//        Comparator<University> universityComparator = UseComparator.getUniversityComparator(EnumUniversity.NAME);
 
 //        universities.sort(universityComparator);
 //        students.sort(studentComparator);
@@ -102,19 +35,23 @@ public class Main {
 //        streamUni.forEach(System.out::println);
 //        streamStu.forEach(System.out::println);
 
-        List<Statistics> statistics = Transformer.former(universities,students);
+        List<Statistics> statistics = Transformer.former(students, universities);
         try {
             XlsWriter.createTable(statistics, "statistics");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-//        for (University university : universities) {
-//            System.out.println(university.toString());
-//        }
-//
-//        for (Student student : students) {
-//            System.out.println(student.toString());
-//        }
+        try {
+            JsonWriter.createJson(universities, students, statistics, "statistics");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            XlsReader.close(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

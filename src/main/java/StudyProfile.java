@@ -1,3 +1,5 @@
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum StudyProfile {
     MEDICINE ("Medicine"),
     PHYSICS ("Physics"),
@@ -7,6 +9,7 @@ public enum StudyProfile {
     SPORT ("Sport"),
     LINGUISTICS ("Linguistics");
 
+    @JsonProperty("study-profile")
     private String title;
 
     StudyProfile(String title) {

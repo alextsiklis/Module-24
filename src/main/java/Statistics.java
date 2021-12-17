@@ -1,52 +1,32 @@
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlElement;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Statistics {
-    public Statistics() {
 
-    }
-
-    public StudyProfile getStudyProfile() {
-        return studyProfile;
-    }
-
-    public void setStudyProfile(StudyProfile studyProfile) {
-        this.studyProfile = studyProfile;
-    }
-
-    public BigDecimal getAvgExamScore() {
-        return AvgExamScore;
-    }
-
-    public void setAvgExamScore(BigDecimal avgExamScore) {
-        this.AvgExamScore = avgExamScore;
-    }
-
-    public String getUniversityName() {
-        return universityName;
-    }
-
-    public void setUniversityName(String universityName) {
-        this.universityName = universityName;
-    }
-
-    public int getStuCount() {
-        return stuCount;
-    }
-
-    public void setStuCount(int stuCount) {
-        this.stuCount = stuCount;
-    }
-
-    public Statistics(StudyProfile studyProfile, BigDecimal avgExamScore, String universityName, int stuCount) {
-        this.studyProfile = studyProfile;
-        this.AvgExamScore = avgExamScore;
-        this.universityName = universityName;
-        this.stuCount = stuCount;
-    }
-
+    @JsonProperty("studyProfile")
+    @XmlElement(name = "studyProfile")
     public StudyProfile studyProfile;
-    public BigDecimal AvgExamScore;
+
+    @JsonProperty("AvgExamScore")
+    @XmlElement(name = "AvgExamScore")
+    public float AvgExamScore;
+
+    @JsonProperty("universityName")
+    @XmlElement(name = "universityName")
     public String universityName;
+
+    @JsonProperty("stuCount")
+    @XmlElement(name = "stuCount")
     public int stuCount;
 
 }

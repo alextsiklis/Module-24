@@ -7,11 +7,14 @@ import org.apache.poi.ss.usermodel.Row;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+
 
 public class XlsWriter {
     public static void createTable(List<Statistics> stats, String name) throws IOException {
-        String filename = name + ".xls";
+        Date date = new Date();
+        String filename = String.format("%s_%tF.xls", name, date);
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet(name);
         int rowNum = 0;
@@ -37,18 +40,20 @@ public class XlsWriter {
             fill(sheet, ++rowNum, stat);
         }
 
-        File file = new File(filename);
+        File file = new File(String.format("XLSFiles/%s", filename));
         try (FileOutputStream fileOut = new FileOutputStream(file)) {
             workbook.write(fileOut);
         }
-        System.out.println("Excel файл создан");
 }
 
     public static void fill(HSSFSheet sheet, int rowNum, Statistics stat) {
+        double scale = Math.pow(10, 2);
+        double result = Math.ceil(stat.getAvgExamScore()* scale) / scale;
+
         Row row = sheet.createRow(rowNum);
         row.createCell(0).setCellValue(stat.getStudyProfile().getTitle());
         row.createCell(1).setCellValue(stat.getStuCount());
         row.createCell(2).setCellValue(stat.getUniversityName());
-        row.createCell(3).setCellValue(String.valueOf(stat.getAvgExamScore()));
+        row.createCell(3).setCellValue(result);
     }
 }
