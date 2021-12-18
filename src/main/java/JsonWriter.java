@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
@@ -5,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class JsonWriter {
-    public static void createJson(List<University> universities, List<Student> students, List<Statistics> statistics, String name) throws IOException {
+    public static void createJson(List<University> universities, List<Student> students, List<Statistics> statistics, String name) throws JsonProcessingException {
         Date date = new Date();
         String filename = String.format("%s_%tF.json", name, date);
 

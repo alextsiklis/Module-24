@@ -1,11 +1,11 @@
-import org.apache.poi.xwpf.usermodel.XWPFLatentStyles;
+import jakarta.xml.bind.JAXBException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String file = "src/main/resources/universityInfo.xlsx";
 
         PackageCreator.createPackage("XLSFiles");
@@ -37,19 +37,29 @@ public class Main {
 
         List<Statistics> statistics = Transformer.former(students, universities);
         try {
-            XlsWriter.createTable(statistics, "statistics");
-        } catch (IOException e) {
+            JsonWriter.createJson(universities, students, statistics, "statistics");
+            LogCreator.logCreator("JSON файл создан и заполнен информацией");
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
-            JsonWriter.createJson(universities, students, statistics, "statistics");
+            XmlWriter.createXml(universities, students, "statistics");
+            LogCreator.logCreator("XML файл создан и заполнен информацией");
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            XlsWriter.createTable(statistics, "statistics");
+            LogCreator.logCreator("Xls файл создан и заполнен информацией");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
             XlsReader.close(file);
+            LogCreator.logCreator("Задача выполнена");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
