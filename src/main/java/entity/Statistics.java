@@ -1,16 +1,20 @@
+package entity;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.xml.bind.annotation.XmlElement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+
+@XmlRootElement(name = "record")
 public class Statistics {
 
     @JsonProperty("studyProfile")

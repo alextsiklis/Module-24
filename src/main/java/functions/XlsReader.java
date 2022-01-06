@@ -1,4 +1,8 @@
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+package functions;
+
+import entity.Student;
+import entity.StudyProfile;
+import entity.University;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;

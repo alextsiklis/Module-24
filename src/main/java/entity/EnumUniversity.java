@@ -1,6 +1,9 @@
+package entity;
+
+import functions.Comparator;
 import org.apache.commons.lang3.StringUtils;
 
-public enum EnumUniversity implements Comparator<University>{
+public enum EnumUniversity implements Comparator<University> {
 
     NAME {
         @Override

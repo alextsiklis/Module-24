@@ -1,9 +1,11 @@
+package entity;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Comparator;
 
 @AllArgsConstructor
@@ -12,7 +14,7 @@ import java.util.Comparator;
 @Setter
 @ToString
 
-@XmlType(name = "student")
+@XmlRootElement(name = "student")
 public class Student {
     @JsonProperty("fullName")
     @XmlElement(name = "fullName")

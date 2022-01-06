@@ -1,3 +1,9 @@
+package functions;
+
+import entity.Statistics;
+import entity.Student;
+import entity.StudyProfile;
+import entity.University;
 import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;

@@ -1,3 +1,10 @@
+package functions;
+
+import entity.EnumStudent;
+import entity.EnumUniversity;
+import entity.Student;
+import entity.University;
+
 import java.util.Comparator;
 
 public class UseComparator {

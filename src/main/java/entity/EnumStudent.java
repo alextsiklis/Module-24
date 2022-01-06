@@ -1,3 +1,6 @@
+package entity;
+
+import functions.Comparator;
 import org.apache.commons.lang3.StringUtils;
 
 public enum EnumStudent implements Comparator<Student> {

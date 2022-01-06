@@ -1,3 +1,5 @@
+package entity;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum StudyProfile {

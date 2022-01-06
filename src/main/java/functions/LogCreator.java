@@ -1,3 +1,7 @@
+package functions;
+
+import sun.applet.Main;
+
 import java.util.logging.Logger;
 
 public class LogCreator {

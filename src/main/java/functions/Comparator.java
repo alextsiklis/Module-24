@@ -1,3 +1,5 @@
+package functions;
+
 import org.apache.poi.ss.formula.functions.T;
 
 public interface Comparator<T> {
