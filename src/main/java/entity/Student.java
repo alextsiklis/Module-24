@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Comparator;
@@ -15,16 +17,21 @@ import java.util.Comparator;
 @ToString
 
 @XmlRootElement(name = "student")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Student {
+
     @JsonProperty("fullName")
     @XmlElement(name = "fullName")
     public String fullName;
+
     @JsonProperty("university-ID")
     @XmlElement(name = "university-ID")
     public String universityId;
+
     @JsonProperty("course")
     @XmlElement(name = "course")
     public int currentCourseNumber;
+
     @JsonProperty("score")
     @XmlElement(name = "score")
     public float avgExamScore;

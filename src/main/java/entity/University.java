@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Comparator;
@@ -15,7 +17,9 @@ import java.util.Comparator;
 @ToString
 
 @XmlRootElement(name = "university")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class University {
+
     @JsonProperty("ID")
     @XmlElement(name = "ID")
     private String id;

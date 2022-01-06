@@ -1,6 +1,6 @@
 package functions;
 
-import sun.applet.Main;
+import sun.tools.jar.Main;
 
 import java.util.logging.Logger;
 

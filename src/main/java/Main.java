@@ -12,9 +12,9 @@ public class Main {
     public static void main(String[] args) {
         String file = "src/main/resources/universityInfo.xlsx";
 
-        PackageCreator.createPackage("XLSFiles");
-        PackageCreator.createPackage("JSONFiles");
-        PackageCreator.createPackage("XMLFiles");
+        for (String s : Arrays.asList("XLSFiles", "JSONFiles", "XMLFiles")) {
+            PackageCreator.createPackage(s);
+        }
 
         List<University> universities = XlsReader.readUni(XlsReader.openTable(file));
         List<Student> students = XlsReader.readStu(XlsReader.openTable(file));

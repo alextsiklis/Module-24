@@ -13,7 +13,7 @@ import java.util.List;
 public class XmlWriter {
     public static void createXml(List<University> universities, List<Student> students, String name) throws JAXBException {
         Date date = new Date();
-        String filename = String.format("%s_%tF.xls", name, date);
+        String filename = String.format("%s_%tF.xml", name, date);
         File file = new File(String.format("XMLFiles/%s", filename));
 
         for (University university : universities) {
