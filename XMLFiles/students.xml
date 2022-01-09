@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<students>
+    <student>
+        <fullName>Иванов И. А.</fullName>
+        <university-ID>0002-high</university-ID>
+        <course>2</course>
+        <score>4.0</score>
+    </student>
+    <student>
+        <fullName>Козлов М. В.</fullName>
+        <university-ID>0002-high</university-ID>
+        <course>2</course>
+        <score>4.6</score>
+    </student>
+    <student>
+        <fullName>Фёдоров А. И.</fullName>
+        <university-ID>0002-high</university-ID>
+        <course>3</course>
+        <score>4.2</score>
+    </student>
+    <student>
+        <fullName>Игнатьев М. М.</fullName>
+        <university-ID>0003-high</university-ID>
+        <course>4</course>
+        <score>4.3</score>
+    </student>
+    <student>
+        <fullName>Соколов В. В.</fullName>
+        <university-ID>0004-high</university-ID>
+        <course>1</course>
+        <score>4.8</score>
+    </student>
+    <student>
+        <fullName>Сидоров Е. Г.</fullName>
+        <university-ID>0004-high</university-ID>
+        <course>2</course>
+        <score>3.9</score>
+    </student>
+    <student>
+        <fullName>Витальев В. А.</fullName>
+        <university-ID>0001-high</university-ID>
+        <course>2</course>
+        <score>4.0</score>
+    </student>
+    <student>
+        <fullName>Петров П. А.</fullName>
+        <university-ID>0001-high</university-ID>
+        <course>1</course>
+        <score>5.0</score>
+    </student>
+    <student>
+        <fullName>Алексеев С. В.</fullName>
+        <university-ID>0001-high</university-ID>
+        <course>1</course>
+        <score>5.0</score>
+    </student>
+    <student>
+        <fullName>Иванов А. Г.</fullName>
+        <university-ID>0001-high</university-ID>
+        <course>3</course>
+        <score>4.8</score>
+    </student>
+</students>

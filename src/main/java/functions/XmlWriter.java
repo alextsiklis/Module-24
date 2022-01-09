@@ -1,7 +1,6 @@
 package functions;
 
-import entity.Student;
-import entity.University;
+import entity.*;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -11,23 +10,26 @@ import java.util.Date;
 import java.util.List;
 
 public class XmlWriter {
-    public static void createXml(List<University> universities, List<Student> students, String name) throws JAXBException {
+    public static void createXml(StatXml stat, UniversityXml university, StudentXml student, String name) throws JAXBException {
         Date date = new Date();
         String filename = String.format("%s_%tF.xml", name, date);
         File file = new File(String.format("XMLFiles/%s", filename));
+        File fileUni = new File("XMLFiles/universities.xml");
+        File fileStu = new File("XMLFiles/students.xml");
 
-        for (University university : universities) {
-            JAXBContext jaxbContextUni = JAXBContext.newInstance(University.class);
-            Marshaller jaxbMarshallerUni = jaxbContextUni.createMarshaller();
-            jaxbMarshallerUni.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshallerUni.marshal(university, file);
-        }
+        JAXBContext jaxbContextUni = JAXBContext.newInstance(UniversityXml.class);
+        Marshaller jaxbMarshallerUni = jaxbContextUni.createMarshaller();
+        jaxbMarshallerUni.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshallerUni.marshal(university, fileUni);
 
-        for (Student student : students) {
-            JAXBContext jaxbContextStu = JAXBContext.newInstance(Student.class);
-            Marshaller jaxbMarshallerStu = jaxbContextStu.createMarshaller();
-            jaxbMarshallerStu.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshallerStu.marshal(student, file);
-        }
+        JAXBContext jaxbContextStu = JAXBContext.newInstance(StudentXml.class);
+        Marshaller jaxbMarshallerStu = jaxbContextStu.createMarshaller();
+        jaxbMarshallerStu.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshallerStu.marshal(student, fileStu);
+
+        JAXBContext jaxbContextStat = JAXBContext.newInstance(StatXml.class);
+        Marshaller jaxbMarshallerStat = jaxbContextStat.createMarshaller();
+        jaxbMarshallerStat.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshallerStat.marshal(stat, file);
     }
 }

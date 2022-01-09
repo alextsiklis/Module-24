@@ -1,6 +1,4 @@
-import entity.Statistics;
-import entity.Student;
-import entity.University;
+import entity.*;
 import functions.*;
 
 import javax.xml.bind.JAXBException;
@@ -47,8 +45,12 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
+        UniversityXml universityXml = new UniversityXml(universities);
+        StatXml statXml = new StatXml(statistics);
+        StudentXml studentXml = new StudentXml(students);
+
         try {
-            XmlWriter.createXml(universities, students, "statistics");
+            XmlWriter.createXml( statXml, universityXml, studentXml, "statistics");
         } catch (JAXBException e) {
             e.printStackTrace();
         }

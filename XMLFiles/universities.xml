@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<universities>
+    <university>
+        <ID>0001-high</ID>
+        <fullName>Московский Выдуманный Университет</fullName>
+        <shortName>МВУ</shortName>
+        <yearOfFoundation>1990</yearOfFoundation>
+        <mainProfile>PHYSICS</mainProfile>
+    </university>
+    <university>
+        <ID>0002-high</ID>
+        <fullName>Московский Придуманный Институт</fullName>
+        <shortName>МПИ</shortName>
+        <yearOfFoundation>1987</yearOfFoundation>
+        <mainProfile>PHYSICS</mainProfile>
+    </university>
+    <university>
+        <ID>0003-high</ID>
+        <fullName>Московский Государственный Медицинский Университет</fullName>
+        <shortName>МГМУ</shortName>
+        <yearOfFoundation>1960</yearOfFoundation>
+        <mainProfile>MEDICINE</mainProfile>
+    </university>
+    <university>
+        <ID>0004-high</ID>
+        <fullName>Тамбовский Университет Медицины</fullName>
+        <shortName>ТУМ</shortName>
+        <yearOfFoundation>1995</yearOfFoundation>
+        <mainProfile>MEDICINE</mainProfile>
+    </university>
+    <university>
+        <ID>0005-high</ID>
+        <fullName>Самарский Медицинский Институт</fullName>
+        <shortName>СМИ</shortName>
+        <yearOfFoundation>1936</yearOfFoundation>
+        <mainProfile>MEDICINE</mainProfile>
+    </university>
+    <university>
+        <ID>0006-high</ID>
+        <fullName>Воронежский Литературно-Переводческий Университет</fullName>
+        <shortName>ВЛПУ</shortName>
+        <yearOfFoundation>2003</yearOfFoundation>
+        <mainProfile>LINGUISTICS</mainProfile>
+    </university>
+</universities>

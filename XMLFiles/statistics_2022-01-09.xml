@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<statistics>
+    <statistics>
+        <studyProfile>PHYSICS</studyProfile>
+        <AvgExamScore>4.51</AvgExamScore>
+        <universityName>Московский Выдуманный Университет;Московский Придуманный Институт;</universityName>
+        <stuCount>7</stuCount>
+    </statistics>
+    <statistics>
+        <studyProfile>LINGUISTICS</studyProfile>
+        <AvgExamScore>0.0</AvgExamScore>
+        <universityName>Воронежский Литературно-Переводческий Университет;</universityName>
+        <stuCount>0</stuCount>
+    </statistics>
+    <statistics>
+        <studyProfile>MEDICINE</studyProfile>
+        <AvgExamScore>4.33</AvgExamScore>
+        <universityName>Московский Государственный Медицинский Университет;Тамбовский Университет Медицины;Самарский Медицинский Институт;</universityName>
+        <stuCount>3</stuCount>
+    </statistics>
+</statistics>
