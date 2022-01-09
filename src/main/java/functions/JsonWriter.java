@@ -1,29 +1,40 @@
 package functions;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.Statistics;
-import entity.Student;
-import entity.University;
+import entityJson.StatJson;
+import entityJson.StudentJson;
+import entityJson.UniversityJson;
 
 import java.io.*;
 import java.util.Date;
-import java.util.List;
+import com.google.gson.GsonBuilder;
 
 public class JsonWriter {
-    public static void createJson(List<University> universities, List<Student> students, List<Statistics> statistics, String name) throws JsonProcessingException {
+    public static void createJson(UniversityJson universities, StudentJson students, StatJson statistics, String name) {
         Date date = new Date();
         String filename = String.format("%s_%tF.json", name, date);
 
-        ObjectMapper mapper = new ObjectMapper();
+        String resultStu = new GsonBuilder().setPrettyPrinting().create().toJson(students);
+        String resultUni = new GsonBuilder().setPrettyPrinting().create().toJson(universities);
+        String resultStat = new GsonBuilder().setPrettyPrinting().create().toJson(statistics);
 
-        String result1 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(students);
-        String result2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(universities);
-        String result3 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statistics);
-        String result = result1 + "\n" + result2 + "\n" + result3;
+        try (FileWriter fileUni = new FileWriter("JSONFiles/universities.json")) {
+            fileUni.write(resultUni);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (FileWriter fileStu = new FileWriter("JSONFiles/students.json")) {
+            fileStu.write(resultStu);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         try (FileWriter file = new FileWriter(String.format("JSONFiles/%s", filename))) {
-            file.write(result);
+            file.write(resultStat);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

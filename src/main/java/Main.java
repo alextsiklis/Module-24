@@ -1,4 +1,7 @@
 import entity.*;
+import entityJson.StatJson;
+import entityJson.StudentJson;
+import entityJson.UniversityJson;
 import functions.*;
 
 import javax.xml.bind.JAXBException;
@@ -38,12 +41,6 @@ public class Main {
 //        streamStu.forEach(System.out::println);
 
         List<Statistics> statistics = Transformer.former(students, universities);
-//        try {
-//            functions.JsonWriter.createJson(universities, students, statistics, "statistics");
-//            functions.LogCreator.logCreator("JSON файл создан и заполнен информацией");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
         UniversityXml universityXml = new UniversityXml(universities);
         StatXml statXml = new StatXml(statistics);
@@ -55,6 +52,17 @@ public class Main {
             e.printStackTrace();
         }
         LogCreator.logCreator("XML файл создан и заполнен информацией");
+
+        UniversityJson universityJson = new UniversityJson(universities);
+        StatJson statJson = new StatJson(statistics);
+        StudentJson studentJson = new StudentJson(students);
+
+        try {
+            functions.JsonWriter.createJson(universityJson, studentJson, statJson, "statistics");
+            functions.LogCreator.logCreator("JSON файл создан и заполнен информацией");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             XlsWriter.createTable(statistics, "statistics");

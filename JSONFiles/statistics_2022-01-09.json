@@ -1,0 +1,22 @@
+{
+  "statistics": [
+    {
+      "studyProfile": "MEDICINE",
+      "AvgExamScore": 4.33,
+      "universityName": "Московский Государственный Медицинский Университет;Тамбовский Университет Медицины;Самарский Медицинский Институт;",
+      "stuCount": 3
+    },
+    {
+      "studyProfile": "LINGUISTICS",
+      "AvgExamScore": 0.0,
+      "universityName": "Воронежский Литературно-Переводческий Университет;",
+      "stuCount": 0
+    },
+    {
+      "studyProfile": "PHYSICS",
+      "AvgExamScore": 4.51,
+      "universityName": "Московский Выдуманный Университет;Московский Придуманный Институт;",
+      "stuCount": 7
+    }
+  ]
+}
